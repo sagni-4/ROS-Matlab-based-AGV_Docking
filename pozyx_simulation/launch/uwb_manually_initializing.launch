@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find pozyx_simulation)/launch/uwb_anchors_set.launch" />
+  
+  <node pkg="pozyx_simulation" name="pozyx_simulation"  type="uwb_simulation.py" output="screen">
+  </node>
+</launch>

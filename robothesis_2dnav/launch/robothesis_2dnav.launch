@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <!-- Load joint controller configurations from YAML file to parameter server -->
+    <arg name="robot_name" default="robothesis" />
+    <arg name="rate" default="100" />
+    <arg name="ignore_timestamp" default="true" />
+    <arg name="use_tf_static" default="true" />
+    
+
+    <arg name="paused" default="false" />
+    <arg name="use_sim_time" default="true" />
+    <arg name="gui" default="true" />
+    <arg name="headless" default="false" />
+    <arg name="debug" default="false" />
+    <arg name="gui_required" default="true" />
+    <arg name="mesh_enabled" default="true" />
+
+ <include file="$(find amcl)/examples/amcl_diff.launch" />
+        <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+            <rosparam file="$(find robothesis_2dnav)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+            <rosparam file="$(find robothesis_2dnav)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+            <rosparam file="$(find robothesis_2dnav)/param/local_costmap_params.yaml" command="load" />
+            <rosparam file="$(find robothesis_2dnav)/param/global_costmap_params.yaml" command="load" />
+            <rosparam file="$(find robothesis_2dnav)/param/base_local_planner_params.yaml" command="load" />
+            <!--param name="base_global_planner" value="global_planner/GlobalPlanner" />
+            <param name="planner_frequency" value="1.0" />
+            <param name="planner_patience" value="5.0" />
+
+            <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+            <param name="controller_frequency" value="5.0" />
+            <param name="controller_patience" value="15.0" /-->
+        </node>
+    
+
+</launch>

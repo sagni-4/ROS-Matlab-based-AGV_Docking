@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<robot>
+
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <legacyMode>false</legacyMode>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>10</updateRate>
+      <leftJoint>left_wheel_hinge</leftJoint>
+      <rightJoint>right_wheel_hinge</rightJoint>
+      <wheelSeparation>0.4</wheelSeparation>
+      <wheelDiameter>0.2</wheelDiameter>
+      <torque>10</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <publishWheelTF>false</publishWheelTF>
+      <publishWheelJointState>false</publishWheelJointState>
+      <rosDebugLevel>na</rosDebugLevel>
+      <wheelAcceleration>0</wheelAcceleration>
+      <wheelTorque>5</wheelTorque>
+      <odometrySource>world</odometrySource>
+      <publishTf>1</publishTf>
+      <publishOdomTF>true</publishOdomTF>
+    </plugin>
+  </gazebo>
+
+  <!-- camera -->
+  <!--gazebo reference="camera">
+    <sensor type="camera" name="camera1">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>camera</cameraName>
+        <imageTopicName>rgb/image_raw</imageTopicName>
+        <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+        <frameName>camera</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo-->
+
+<!--gazebo>
+        <plugin name="hector_gps" filename="libhector_gazebo_ros_gps.so">
+            <always_on>true</always_on>
+            <updateRate>4.0</updateRate>
+            <bodyName>base_link</bodyName>
+            <frameId>gps_link</frameId>
+            <topicName>gps/fix</topicName>
+            <velocityTopicName>gps/fix_velocity</velocityTopicName>
+            <referenceLatitude>-30.06022459407145675</referenceLatitude>
+            <referenceLongitude>-51.173913575780311191</referenceLongitude>
+            <referenceHeading>90</referenceHeading>
+            <referenceAltitude>10</referenceAltitude>
+            <offset>0 0 0</offset>
+            <drift>0.001 0.001 0.001</drift>
+            <gaussianNoise>0.05 0.05 0.05</gaussianNoise>
+            <velocityDrift>0.001 0.001 0.001</velocityDrift>
+            <velocityGaussianNoise>0.5 0.5 0.5</velocityGaussianNoise>
+            
+        </plugin>
+
+    </gazebo-->
+    
+    <gazebo>
+     <plugin name="imu_controller" filename="libgazebo_ros_imu.so">
+     <alwaysOn>true</alwaysOn>
+     <updateRate>50.0</updateRate> 
+     <bodyName>imu_link</bodyName>
+     <topicName>imu_data</topicName>
+     <serviceName>imu/service</serviceName>
+     <gaussianNoise>2.89e-08</gaussianNoise>
+     <xyzOffsets>0 0 0</xyzOffsets>
+     <rpyOffsets>0 0 0</rpyOffsets>
+     <frameName>imu_link</frameName>
+     <!--interface:position name="imu_position"/>
+     </controller:gazebo_ros_imu-->
+     </plugin>
+   </gazebo>
+     
+     <gazebo>
+        <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10.0</updateRate>
+        <bodyName>chassis</bodyName>
+        <topicName>ground_truth/state</topicName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <frameName>world</frameName>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+        </plugin>
+    </gazebo>
+    <!-- Right wheel ground truth, but not used in the simulation -->
+   <gazebo>
+        <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10.0</updateRate>
+        <bodyName>right_wheel</bodyName>
+        <topicName>ground_truth/right_wheel</topicName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <frameName>world</frameName>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+        </plugin>
+    </gazebo>
+     <!-- Left wheel ground truth but not used in the simulation-->
+    <gazebo>
+        <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10.0</updateRate>
+        <bodyName>left_wheel</bodyName>
+        <topicName>ground_truth/left_wheel</topicName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <frameName>world</frameName>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+        </plugin>
+    </gazebo>
+    
+  <!-- hokuyo -->
+  <gazebo reference="hokuyo">
+    <sensor type="ray" name="head_hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>15.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/scan</topicName>
+        <frameName>/hokuyo</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+<!--Distance Sensors1-->
+ <gazebo reference = "link_1 ">
+  <sensor type = "ray" name = "range_sensor_1">
+  <always_on> true </always_on>
+  <visualize> true </visualize>
+  <ray>
+     <scan>
+        <horizontal>
+            <samples> 3 </samples>
+            <resolution> 1 </resolution>
+            <min_angle> -0.01 </min_angle>
+            <max_angle> 0.01 </max_angle>
+        </horizontal>
+        <vertical>
+            <samples> 1 </samples>
+            <resolution> 1 </resolution>
+            <min_angle> 0 </min_angle>
+            <max_angle> 0.01 </max_angle>
+        </vertical>
+     </scan>
+     <range>
+           <min> 0.10 </min>
+           <max> 10.0 </max>
+           <resolution> 0.01 </resolution>
+     </range>
+  </ray>
+ <plugin name = "gazebo_ros_range_controller" filename = "libgazebo_ros_laser.so">
+  <topicName> proximty_frontLeft/range/lasers </topicName>
+  <frameName> link_1 </frameName>
+  <gaussianNoise> 0.001 </gaussianNoise>
+  <updateRate> 5 </updateRate>
+  <fov> 0.17453293 </fov>
+ </plugin>
+ </sensor>
+</gazebo>
+ 
+ <!--Distance Sensors2-->
+<gazebo reference = "link_2">
+  <sensor type = "ray" name = "range_sensor_2">
+  <always_on> true </always_on>
+  <visualize> true </visualize>
+  <ray>
+     <scan>
+        <horizontal>
+            <samples> 3 </samples>
+            <resolution> 1 </resolution>
+            <min_angle> -0.01 </min_angle>
+            <max_angle> 0.01 </max_angle>
+        </horizontal>
+        <vertical>
+            <samples> 1 </samples>
+            <resolution> 1 </resolution>
+            <min_angle> 0 </min_angle>
+            <max_angle> 0.01 </max_angle>
+        </vertical>
+     </scan>
+     <range>
+           <min> 0.10 </min>
+           <max> 10.0 </max>
+           <resolution> 0.01 </resolution>
+     </range>
+  </ray>
+ <plugin name = "gazebo_ros_range_controller" filename = "libgazebo_ros_laser.so">
+  <topicName> proximty_frontRight/range/lasers </topicName>
+  <frameName> link_2 </frameName>
+  <gaussianNoise> 0.001 </gaussianNoise>
+  <updateRate> 5 </updateRate>
+  <fov> 0.17453293 </fov>
+ </plugin>
+ </sensor>
+</gazebo>
+
+ <!--Distance Sensors3-->
+<gazebo reference = "link_3">
+  <sensor type = "ray" name = "range_sensor_3">
+  <always_on> true </always_on>
+  <visualize> true</visualize>
+  <ray>
+     <scan>
+        <horizontal>
+            <samples> 3 </samples>
+            <resolution> 1 </resolution>
+            <min_angle> 1.5608 </min_angle>
+            <max_angle> 1.5708 </max_angle>
+        </horizontal>
+        <vertical>
+            <samples> 1 </samples>
+            <resolution> 1 </resolution>
+            <min_angle> 0 </min_angle>
+            <max_angle> 0.01 </max_angle>
+        </vertical>
+     </scan>
+     <range>
+           <min> 0.10 </min>
+           <max> 10.0 </max>
+           <resolution> 0.01 </resolution>
+     </range>
+  </ray>
+ <plugin name = "gazebo_ros_range_controller" filename = "libgazebo_ros_laser.so">
+  <topicName> proximty_LsideFront/range/lasers </topicName>
+  <frameName> link_3 </frameName>
+  <gaussianNoise> 0.001 </gaussianNoise>
+  <updateRate> 5 </updateRate>
+  <fov> 0.17453293 </fov>
+ </plugin>
+ </sensor>
+</gazebo>
+ 
+ <!--Distance Sensors4-->
+<gazebo reference = "link_4">
+  <sensor type = "ray" name = "range_sensor_4">
+  <always_on> true </always_on>
+  <visualize> true </visualize>
+  <ray>
+     <scan>
+        <horizontal>
+            <samples> 3 </samples>
+            <resolution> 1 </resolution>
+            <min_angle> 1.5608 </min_angle>
+            <max_angle> 1.5808 </max_angle>
+        </horizontal>
+        <vertical>
+            <samples> 1 </samples>
+            <resolution> 1 </resolution>
+            <min_angle> 0 </min_angle>
+            <max_angle> 0.01 </max_angle>
+        </vertical>
+     </scan>
+     <range>
+           <min> 0.10 </min>
+           <max> 10.0 </max>
+           <resolution> 0.01 </resolution>
+     </range>
+  </ray>
+ <plugin name = "gazebo_ros_range_controller" filename = "libgazebo_ros_laser.so">
+  <topicName>proximty_LsideRear/range/lasers </topicName>
+  <frameName> link_4 </frameName>
+  <gaussianNoise> 0.001 </gaussianNoise>
+  <updateRate> 5 </updateRate>
+  <fov> 0.17453293 </fov>
+ </plugin>
+ </sensor>
+</gazebo>
+</robot>

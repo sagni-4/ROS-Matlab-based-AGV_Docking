@@ -1,0 +1,19 @@
+    clear;
+    clc;
+
+    load("DeepNeuralNetwork.mat");
+    I=imread("/home/sagni/Desktop/ThesisMatlab/DNN/stat44/stat4_10.000000.png");
+    
+    reshaped_input_image=reshape(I,[],1);
+
+    input_of_hidden_layer1=w1*reshaped_input_image;
+    output_of_hidden_layer1=ReLU(input_of_hidden_layer1);
+
+    input_of_hidden_layer2=w2*output_of_hidden_layer1;
+    output_of_hidden_layer2=ReLU(input_of_hidden_layer2);
+
+    input_of_hidden_layer3=w3*output_of_hidden_layer2;
+    output_of_hidden_layer3=ReLU(input_of_hidden_layer3);
+
+    input_of_output_node=w4*output_of_hidden_layer3;
+    final_output=Softmax(input_of_output_node)

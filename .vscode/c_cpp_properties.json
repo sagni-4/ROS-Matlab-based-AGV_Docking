@@ -1,0 +1,38 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/sagni/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/sagni/catkin_ws/src/beginwith/include/**",
+        "/home/sagni/catkin_ws/src/multiple-object-tracking-lidar/include/**",
+        "/home/sagni/catkin_ws/src/my_robot/include/**",
+        "/home/sagni/catkin_ws/src/pid/include/**",
+        "/home/sagni/catkin_ws/src/robot_state_publisher/include/**",
+        "/home/sagni/catkin_wsthesis/src/robothesis_2dnav/include/**",
+        "/home/sagni/catkin_ws/src/service_basics/include/**",
+        "/home/sagni/catkin_ws/src/vc200/stalker_driver/include/**",
+        "/home/sagni/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/include/**",
+        "/home/sagni/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+        "/home/sagni/catkin_ws/src/turtlebot3/turtlebot3_slam/include/**",
+        "/home/sagni/catkin_ws/src/turtlesim_automation/include/**",
+        "/home/sagni/catkin_ws/src/udemy_practice_node/include/**",
+        "/home/sagni/catkin_ws/src/udemy_topics/include/**",
+        "/home/sagni/catkin_ws/src/uwb_hardware_driver/include/**",
+        "/home/sagni/catkin_ws/src/vc200/vc200_controller/include/**",
+        "/home/sagni/catkin_ws/src/vc200/vc200_driver/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
