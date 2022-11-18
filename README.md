@@ -1,6 +1,6 @@
 # ROS-Matlab-based-AGV_Docking
 This Repository contains ROS and Matlab based Autonomously Guided Vehicle docking method projects on Gazebo simulation environment.The project consists of a LiDAR sensor based AGV docking station detection method and proximity ruler based docking algorithim.
-The AGV positioning and Localization method used for this project is based on UltraWide Band(UWB) positioning method by using Advoard Localization public repository which can found with all steps [here](https://github.com/advoard/advoard_localization). 
+The AGV positioning and Localization method used for this project is based on UltraWide Band(UWB) positioning method by using Advoard Localization public repository which can be found with all steps [here](https://github.com/advoard/advoard_localization). 
 
 ## Launching The whole projects
 The below two launch command will launch the AGV on the Gazebo and rviz environment ,making it ready for simualtion.
