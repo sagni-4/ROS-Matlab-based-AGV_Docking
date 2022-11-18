@@ -6,7 +6,7 @@ The AGV positioning and Localization method used for this project is based on Ul
 The below two launch command will launch the AGV on the Gazebo and rviz environment ,making it ready for simualtion.
 1. roslaunch robothesis_2dnav robothesis_configuration.launch
 2. roslaunch robothesis_2dnav robothesis_2dnav.launch
-Then 
+Then, 
 3.roslaunch advoard_localization pozyx_sim_kalman.launch , to start the UWB based AGV Localization.
 After launching the project using the above commands, all the data from the sensor are ready and starts getting published on their corresponding ROS topic.
 For examples:
